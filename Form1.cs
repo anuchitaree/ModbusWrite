@@ -1,14 +1,9 @@
 ﻿using EasyModbus;
+using ModbusWrite.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ModbusWrite.Models;
 
 namespace ModbusWrite
 {
@@ -37,13 +32,21 @@ namespace ModbusWrite
                 modbusServer.Listen();
                 labStatus.Text = "Status : Started";
                 btnStart.Text = "STOP";
+                btnStart.BackColor = Color.GreenYellow;
+                btnDraft.Visible = true;
+                btnSave.Visible = true;
+                btnSetVal.Visible = true;
             }
             else
             {
                 modbusServer.StopListening();
                 modbusServer = null;
                 labStatus.Text = "Status :";
+                btnStart.BackColor = SystemColors.Control;
                 btnStart.Text = "START";
+                btnDraft.Visible = false;
+                btnSave.Visible = false;
+                btnSetVal.Visible = false;
             }
         }
 
@@ -63,7 +66,10 @@ namespace ModbusWrite
                 }
                 else if (cmbRegType.SelectedIndex == 3)
                 {
+                    var hexStr = short.Parse(textReqVal.Text);
+
                     short ival = short.Parse(textReqVal.Text);
+
                     ModbusServer.InputRegisters regs = modbusServer.inputRegisters;
                     regs[iaddress] = ival;
                 }
@@ -101,6 +107,11 @@ namespace ModbusWrite
 
         private void btnDraft_Click(object sender, EventArgs e)
         {
+            RegisterTypeSelected();
+        }
+
+        private void RegisterTypeSelected()
+        {
             try
             {
                 int regAddr = 0;
@@ -111,16 +122,16 @@ namespace ModbusWrite
                 switch (cmbRegType.SelectedIndex)
                 {
                     case 0:
-                        regAddr = 400000;
+                        regAddr = 000000;
                         break;
                     case 1:
-                        regAddr = 300000;
-                        break;
-                    case 2:
                         regAddr = 200000;
                         break;
+                    case 2:
+                        regAddr = 300000;
+                        break;
                     case 3:
-                        regAddr = 000000;
+                        regAddr = 400000;
                         break;
                 }
                 regAddr = regAddr + startAddr;
@@ -163,10 +174,10 @@ namespace ModbusWrite
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                ex.ToString();
             }
 
         }
@@ -196,6 +207,15 @@ namespace ModbusWrite
             dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             dgv.AllowUserToResizeRows = false;
             dgv.AllowUserToResizeColumns = false;
+
+            btnDraft.Visible = false;
+            btnSave.Visible = false;
+            btnSetVal.Visible = false;
+        }
+
+        private void cmbRegType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RegisterTypeSelected();
         }
     }
 }
