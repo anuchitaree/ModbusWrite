@@ -58,13 +58,13 @@ namespace ModbusWrite
 
                 int iaddress = int.Parse(textRegAdr.Text);
 
-                if (cmbRegType.SelectedIndex == 2)
+                if (cmbRegType.SelectedIndex == 3)
                 {
                     short ival = short.Parse(textReqVal.Text);
                     ModbusServer.HoldingRegisters regs = modbusServer.holdingRegisters;
                     regs[iaddress] = ival;
                 }
-                else if (cmbRegType.SelectedIndex == 3)
+                else if (cmbRegType.SelectedIndex == 2)
                 {
                     var hexStr = short.Parse(textReqVal.Text);
 
@@ -125,7 +125,7 @@ namespace ModbusWrite
                         regAddr = 000000;
                         break;
                     case 1:
-                        regAddr = 200000;
+                        regAddr = 100000;
                         break;
                     case 2:
                         regAddr = 300000;
@@ -134,6 +134,7 @@ namespace ModbusWrite
                         regAddr = 400000;
                         break;
                 }
+                label2.Text = String.Format("Register off-set starting address : {0}", regAddr.ToString().PadLeft(6,'0').Insert(3," "));
                 regAddr = regAddr + startAddr;
 
                 var drafmodel = new List<WriteModel>();
