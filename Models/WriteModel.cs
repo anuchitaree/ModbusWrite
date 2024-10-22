@@ -9,6 +9,8 @@ namespace ModbusWrite.Models
     public class WriteModel
     {
         public int Id { get; set; }
+
+        public int UnitIdentify { get; set; }
         public string Address { get; set; }
         public string DecValue { get; set; }
         public string HexValue { get; set; }

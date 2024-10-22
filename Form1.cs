@@ -1,5 +1,6 @@
 ﻿using EasyModbus;
 using ModbusWrite.Models;
+using ModbusWrite.Modules;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -22,6 +23,11 @@ namespace ModbusWrite
             cmbStep.SelectedIndex = 0;
             cmbQty.SelectedIndex = 0;
             InitDvg();
+            for (int i = 0; i < 31; i++)
+            {
+                cmbUnitIdentify.Items.Add(i + 1);
+            }
+            cmbUnitIdentify.SelectedIndex = 0;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -29,6 +35,7 @@ namespace ModbusWrite
             if (btnStart.Text == "START")
             {
                 modbusServer = new ModbusServer();
+                modbusServer.UnitIdentifier = byte.Parse(cmbUnitIdentify.Text);
                 modbusServer.Listen();
                 labStatus.Text = "Status : Started";
                 btnStart.Text = "STOP";
@@ -60,9 +67,13 @@ namespace ModbusWrite
 
                 if (cmbRegType.SelectedIndex == 3)
                 {
-                    short ival = short.Parse(textReqVal.Text);
+                    //short ival = short.Parse(textReqVal.Text);
                     ModbusServer.HoldingRegisters regs = modbusServer.holdingRegisters;
-                    regs[iaddress] = ival;
+                    //regs[iaddress] = ival;
+                    (short,short) output = ModbusOps.UInt32ToShort(textReqVal.Text);
+                    regs[iaddress] = output.Item1;
+                    regs[iaddress+1] = output.Item2;
+
                 }
                 else if (cmbRegType.SelectedIndex == 2)
                 {
