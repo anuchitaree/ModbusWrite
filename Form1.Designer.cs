@@ -32,8 +32,6 @@
             this.cmbQty = new System.Windows.Forms.ComboBox();
             this.cmbStep = new System.Windows.Forms.ComboBox();
             this.txtStartAddr = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnDraft = new System.Windows.Forms.Button();
             this.btnSetVal = new System.Windows.Forms.Button();
             this.textReqVal = new System.Windows.Forms.TextBox();
             this.textRegAdr = new System.Windows.Forms.TextBox();
@@ -73,7 +71,7 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(3, 3);
+            this.dgv.Location = new System.Drawing.Point(40, 24);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.Size = new System.Drawing.Size(645, 317);
@@ -115,27 +113,6 @@
             this.txtStartAddr.Text = "1";
             this.txtStartAddr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(657, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(60, 317);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnDraft
-            // 
-            this.btnDraft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDraft.Location = new System.Drawing.Point(657, 3);
-            this.btnDraft.Name = "btnDraft";
-            this.btnDraft.Size = new System.Drawing.Size(114, 38);
-            this.btnDraft.TabIndex = 3;
-            this.btnDraft.Text = "Display";
-            this.btnDraft.UseVisualStyleBackColor = true;
-            this.btnDraft.Click += new System.EventHandler(this.btnDraft_Click);
-            // 
             // btnSetVal
             // 
             this.btnSetVal.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -150,21 +127,21 @@
             // textReqVal
             // 
             this.textReqVal.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textReqVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textReqVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textReqVal.Location = new System.Drawing.Point(303, 18);
             this.textReqVal.MaxLength = 2147483647;
             this.textReqVal.Name = "textReqVal";
-            this.textReqVal.Size = new System.Drawing.Size(294, 26);
+            this.textReqVal.Size = new System.Drawing.Size(294, 24);
             this.textReqVal.TabIndex = 2;
             this.textReqVal.Text = "0";
             // 
             // textRegAdr
             // 
             this.textRegAdr.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textRegAdr.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textRegAdr.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textRegAdr.Location = new System.Drawing.Point(3, 18);
             this.textRegAdr.Name = "textRegAdr";
-            this.textRegAdr.Size = new System.Drawing.Size(294, 26);
+            this.textRegAdr.Size = new System.Drawing.Size(294, 24);
             this.textRegAdr.TabIndex = 2;
             this.textRegAdr.Text = "1";
             // 
@@ -236,7 +213,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(294, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Register off-set starting address : 000000";
+            this.label2.Text = "Register Starting Address";
             // 
             // label1
             // 
@@ -253,7 +230,7 @@
             // 
             this.labStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labStatus.AutoSize = true;
-            this.labStatus.Location = new System.Drawing.Point(23, 521);
+            this.labStatus.Location = new System.Drawing.Point(23, 629);
             this.labStatus.Name = "labStatus";
             this.labStatus.Size = new System.Drawing.Size(40, 13);
             this.labStatus.TabIndex = 5;
@@ -278,7 +255,6 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -369,9 +345,8 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnDraft, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 53);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -407,7 +382,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.dgv);
-            this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 103);
             this.panel1.Name = "panel1";
@@ -418,7 +392,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(780, 511);
+            this.ClientSize = new System.Drawing.Size(963, 619);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.labStatus);
             this.Name = "Form1";
@@ -446,8 +420,6 @@
         private System.Windows.Forms.ComboBox cmbQty;
         private System.Windows.Forms.ComboBox cmbStep;
         private System.Windows.Forms.TextBox txtStartAddr;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnDraft;
         private System.Windows.Forms.Button btnSetVal;
         private System.Windows.Forms.TextBox textReqVal;
         private System.Windows.Forms.TextBox textRegAdr;

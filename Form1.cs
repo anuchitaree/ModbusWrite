@@ -44,8 +44,6 @@ namespace ModbusWrite
                 labStatus.Text = "Status : Started";
                 btnStart.Text = "STOP";
                 btnStart.BackColor = Color.GreenYellow;
-                btnDraft.Visible = true;
-                btnSave.Visible = true;
                 btnSetVal.Visible = true;
             }
             else
@@ -55,8 +53,6 @@ namespace ModbusWrite
                 labStatus.Text = "Status :";
                 btnStart.BackColor = SystemColors.Control;
                 btnStart.Text = "START";
-                btnDraft.Visible = false;
-                btnSave.Visible = false;
                 btnSetVal.Visible = false;
             }
         }
@@ -150,15 +146,7 @@ namespace ModbusWrite
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDraft_Click(object sender, EventArgs e)
-        {
-            RegisterTypeSelected();
-        }
+       
 
         private void RegisterTypeSelected()
         {
@@ -252,8 +240,6 @@ namespace ModbusWrite
             dgv.AllowUserToResizeRows = false;
             dgv.AllowUserToResizeColumns = false;
 
-            btnDraft.Visible = false;
-            btnSave.Visible = false;
             btnSetVal.Visible = false;
         }
 
