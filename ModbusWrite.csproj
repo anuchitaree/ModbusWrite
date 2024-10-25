@@ -84,6 +84,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\WriteModel.cs" />
+    <Compile Include="Modules\Convertion.cs" />
     <Compile Include="Modules\ModbusOps.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
