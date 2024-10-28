@@ -61,6 +61,14 @@ namespace ModbusWrite
             if (btnStart.Text == "START") return;
             try
             {
+                var value = int.Parse(textReqVal.Text);
+                if (value> 999999999)
+                {
+                    MessageBox.Show("Data overflow", "Error");
+                    return;
+                }
+                    
+
                 modbusServer.UnitIdentifier = byte.Parse(cmbUnitIdentify.Text);
                 int iaddress = int.Parse(textRegAdr.Text);
                 if (iaddress <= 0) return;
@@ -339,5 +347,24 @@ namespace ModbusWrite
             }
 
         }
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int row = e.RowIndex;
+                var addressReg = dgv.Rows[row].Cells[0].Value.ToString().RemoveWhitespace();
+                addressReg = addressReg.Remove(0, 1);
+                var offset = int.Parse(addressReg);
+                textRegAdr.Text = offset.ToString();
+
+            }
+            catch
+            {
+
+            }
+        }
+
+       
     }
 }

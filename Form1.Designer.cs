@@ -67,6 +67,7 @@
             this.dgv.ReadOnly = true;
             this.dgv.Size = new System.Drawing.Size(309, 476);
             this.dgv.TabIndex = 6;
+            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             // 
             // txtStartAddr
             // 
@@ -86,7 +87,7 @@
             this.btnSetVal.Name = "btnSetVal";
             this.btnSetVal.Size = new System.Drawing.Size(61, 37);
             this.btnSetVal.TabIndex = 3;
-            this.btnSetVal.Text = "Setting";
+            this.btnSetVal.Text = "Preset";
             this.btnSetVal.UseVisualStyleBackColor = true;
             this.btnSetVal.Click += new System.EventHandler(this.btnSetVal_Click);
             // 
@@ -95,11 +96,12 @@
             this.textReqVal.Dock = System.Windows.Forms.DockStyle.Top;
             this.textReqVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textReqVal.Location = new System.Drawing.Point(121, 15);
-            this.textReqVal.MaxLength = 2147483647;
+            this.textReqVal.MaxLength = 0;
             this.textReqVal.Name = "textReqVal";
             this.textReqVal.Size = new System.Drawing.Size(112, 20);
             this.textReqVal.TabIndex = 2;
             this.textReqVal.Text = "0";
+            this.textReqVal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textRegAdr
             // 
@@ -110,6 +112,7 @@
             this.textRegAdr.Size = new System.Drawing.Size(112, 20);
             this.textRegAdr.TabIndex = 2;
             this.textRegAdr.Text = "1";
+            this.textRegAdr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textRegAdr.TextChanged += new System.EventHandler(this.textRegAdr_TextChanged);
             // 
             // cmbRegType
@@ -189,7 +192,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(112, 12);
             this.label8.TabIndex = 9;
-            this.label8.Text = "New value";
+            this.label8.Text = "New value : Int32";
             // 
             // label9
             // 
